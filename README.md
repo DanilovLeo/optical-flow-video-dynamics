@@ -1,10 +1,10 @@
-# Оптический поток и динамика видео
+# Optical Flow and Video Dynamics
 
-## Вариант B: Учебная система анализа движения (трекинг-модуль)
+## Variant B: Educational Motion-Analysis System (tracking module)
 
-Анализ методов оптического потока (Lucas-Kanade и Farneback) для отслеживания движения видео.
+Analysis of optical-flow methods (Lucas-Kanade and Farneback) for tracking motion in video.
 
-## Параметры
+## Parameters
 
 ### Lucas-Kanade (Sparse)
 - Max corners: 100
@@ -23,13 +23,13 @@
 - Poly sigma: 1.2
 - Thresholds tested: 2.0, 0.9
 
-## Результаты
+## Results
 
 ### Lucas-Kanade
 - Initial points: 100
 - Final points: 67
 - Point loss: 33%
-- Gradual degradation with sharp drop at frames 100-140 (occlusions/objects leaving frame)
+- Gradual degradation with a sharp drop at frames 100-140 (occlusions / objects leaving frame)
 
 ### Farneback
 **Threshold 2.0:**
@@ -40,38 +40,40 @@
 - Motion pixels: 9.5%
 - Fragments: 41
 
-### Ключевые наблюдения
+### Key observations
 
-**LK Сильные стороны:**
-- Стабильное долгосрочное отслеживание
-- Четкая визуализация траектории
-- Предсказуемое поведение при потере очков
+**LK strengths:**
+- Stable long-term tracking
+- Clear trajectory visualization
+- Predictable behavior when points are lost
 
-**Слабые стороны LK:**
-- Со временем очки теряются (33% за 200 кадров)
-- Требуется хорошая текстура / особенности
+**LK weaknesses:**
+- Points are lost over time (33% over 200 frames)
+- Requires good texture / features
 
-**Сильные стороны Farneback:**
-- Полный охват поля движения
-- Обнаруживает все движущиеся области
+**Farneback strengths:**
+- Full coverage of the motion field
+- Detects all moving regions
 
-**Слабые стороны Farneback:**
-- Высокая фрагментация (41 область при пороговом значении 0,9)
-- Чувствительность к порогу: более низкий порог фиксирует больше движения, но увеличивает уровень шума
-- Невозможно отличить реальное движение от шума без последующей обработки
+**Farneback weaknesses:**
+- High fragmentation (41 regions at threshold 0.9)
+- Threshold sensitivity: a lower threshold captures more motion but increases noise
+- Cannot distinguish real motion from noise without post-processing
 
-### Когда использовать:
+### When to use
 
-**LK когда:**
-- Необходимо отслеживать определенные объекты / особенности
-- Важна скорость
-- Есть четкие ключевые точки
+**LK when:**
+- You need to track specific objects / features
+- Speed matters
+- Clear keypoints are available
 
-**Farneback когда:**
-- Требуется полный анализ движения сцены
-- Обнаружение всех движущихся объектов
-- Требуется сегментация движения
+**Farneback when:**
+- Full scene-motion analysis is required
+- Detection of all moving objects is needed
+- Motion segmentation is required
 
-## Заключение
+## Conclusion
 
-В этом видео (движение толпы) LK показал лучшие результаты благодаря стабильному отслеживанию и четким траекториям. Farneback продемонстрировал высокую фрагментацию, продемонстрировав свою чувствительность к шуму и необходимость тщательной настройки порога.
+On this video (crowd motion), LK performed better thanks to stable tracking and clear
+trajectories. Farneback showed high fragmentation, demonstrating its sensitivity to noise and
+the need for careful threshold tuning.
